@@ -39,7 +39,7 @@ guessBtn.addEventListener('click', function() {
     // guessInput.disabled = true;
     // guessInput.style.borderColor = 'green';
     // setMessage(`${winningNum} Верно! Победа!`, 'green');
-    gameOver(true, setMessage(`${winningNum} Верно! Победа!`, 'green'));
+    gameOver(true, `${winningNum} Верно! Победа!`, 'green');
   } else {
     guessesLeft -= 1;
 
@@ -51,11 +51,8 @@ guessBtn.addEventListener('click', function() {
       //   'red'
       // );
       gameOver(
-        true,
-        setMessage(
-          `Игра окончена, вы проиграли. Верный ответ - ${winningNum}`,
-          'red'
-        )
+        false,
+        `Игра окончена, вы проиграли. Верный ответ - ${winningNum}`
       );
     } else {
       guessInput.style.borderColor = 'red';
@@ -74,6 +71,7 @@ function gameOver(won, msg) {
   won === true ? (color = 'green') : (color = 'red');
   guessInput.disabled = true;
   guessInput.style.borderColor = color;
+  message.style.color = color;
   setMessage(msg);
 
   // play again?
